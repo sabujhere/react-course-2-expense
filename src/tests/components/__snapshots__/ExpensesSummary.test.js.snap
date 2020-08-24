@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should connectly render expenseSummay with 1 expense 1`] = `
+<div>
+  Viewing 
+  1
+   expense
+  s
+   totalling 
+  $100.25
+</div>
+`;
+
+exports[`should connectly render expenseSummay with 2 expenses 1`] = `
+<div>
+  Viewing 
+  2
+   expense
+  s
+   totalling 
+  $80,000,000.25
+</div>
+`;
