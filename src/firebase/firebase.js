@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-
+import moment from 'moment';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBINkmOD5xotJ0Tr-kwHWCZczEeXONplM4",
@@ -17,44 +17,64 @@ const firebaseConfig = {
 
   const database = firebase.database();
 
-  database.ref().set({
-      name:'Sabuj Saha',
-      age:26,
-      isSingle:false,
-      job:{
-          title:'Software developer',
-          company:'Google'
-      },
-      stressLevel:6,
-      location: {
-          city:'Chicago',
-          country:'USA'
-      }
-  }).then(()=>{
-      console.log('data is saved!')
-  }).catch((e)=>{
-    console.log('This failed.', e)
+  database.ref('expenses').push({
+    description: 'Gum',
+    note: '',
+    amount: 195,
+    createdAt: 0
   });
 
-const onValueChange = database.ref().on('value', (snapshot)=>{
-    console.log(snapshot.val());
-});
+  database.ref('expenses').push({
+    description: 'Rent',
+  note: '',
+  amount: 109500,
+  createdAt: moment(0).subtract(4, 'days').valueOf()
+  });
 
- setTimeout(()=>{
-    database.ref().update({
-        stressLevel:9,
-        'job/company':'Amazon',
-        'location/city':'Seattle'
-    }).then(()=>{
-      console.log('user data updated')
-  }).catch((error)=>{
-      console.log('data update failed.error:', error)
-  })
- },3500);
+  database.ref('expenses').push({
+    description: 'Credit Card',
+    note: '',
+    amount: 4500,
+    createdAt: moment(0).add(4, 'days').valueOf()
+  });
+//   database.ref().set({
+//       name:'Sabuj Saha',
+//       age:26,
+//       isSingle:false,
+//       job:{
+//           title:'Software developer',
+//           company:'Google'
+//       },
+//       stressLevel:6,
+//       location: {
+//           city:'Chicago',
+//           country:'USA'
+//       }
+//   }).then(()=>{
+//       console.log('data is saved!')
+//   }).catch((e)=>{
+//     console.log('This failed.', e)
+//   });
+
+// const onValueChange = database.ref().on('value', (snapshot)=>{
+//     console.log(snapshot.val());
+// });
+
+//  setTimeout(()=>{
+//     database.ref().update({
+//         stressLevel:9,
+//         'job/company':'Amazon',
+//         'location/city':'Seattle'
+//     }).then(()=>{
+//       console.log('user data updated')
+//   }).catch((error)=>{
+//       console.log('data update failed.error:', error)
+//   })
+//  },3500);
 
 
- setTimeout(()=>{
-    database.ref().off('value', onValueChange)
-},7000);
+//  setTimeout(()=>{
+//     database.ref().off('value', onValueChange)
+// },7000);
 
 
