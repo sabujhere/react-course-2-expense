@@ -17,22 +17,44 @@ const firebaseConfig = {
 
   const database = firebase.database();
 
-//   database.ref().set({
-//       name:'Sabuj Saha',
-//       age:26,
-//       isSingle:false,
-//       location: {
-//           city:'Chicago',
-//           country:'USA'
-//       }
-//   }).then(()=>{
-//       console.log('data is saved!')
-//   }).catch((e)=>{
-//     console.log('This failed.', e)
-//   });
-  
-  database.ref('isSingle').remove().then(()=>{
-      console.log('user data removed')
+  database.ref().set({
+      name:'Sabuj Saha',
+      age:26,
+      isSingle:false,
+      job:{
+          title:'Software developer',
+          company:'Google'
+      },
+      stressLevel:6,
+      location: {
+          city:'Chicago',
+          country:'USA'
+      }
+  }).then(()=>{
+      console.log('data is saved!')
+  }).catch((e)=>{
+    console.log('This failed.', e)
+  });
+
+const onValueChange = database.ref().on('value', (snapshot)=>{
+    console.log(snapshot.val());
+});
+
+ setTimeout(()=>{
+    database.ref().update({
+        stressLevel:9,
+        'job/company':'Amazon',
+        'location/city':'Seattle'
+    }).then(()=>{
+      console.log('user data updated')
   }).catch((error)=>{
-      console.log('data removed failed.error:', error)
+      console.log('data update failed.error:', error)
   })
+ },3500);
+
+
+ setTimeout(()=>{
+    database.ref().off('value', onValueChange)
+},7000);
+
+
