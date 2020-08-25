@@ -25,13 +25,17 @@ const firebaseConfig = {
           city:'Chicago',
           country:'USA'
       }
+  }).then(()=>{
+      console.log('data is saved!')
+  }).catch((e)=>{
+    console.log('This failed.', e)
   });
-  
-  database.ref('location/city').set('San Diago');
-  //database.ref().set('This is some data')
-
   
   database.ref('attributes').set({
     height:6,
     weight:216   
- });
+ }).then(()=>{
+    console.log('data is saved!')
+}).catch((e)=>{
+  console.log('This failed.', e)
+});
