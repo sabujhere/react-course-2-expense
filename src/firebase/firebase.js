@@ -17,26 +17,58 @@ const firebaseConfig = {
 
   const database = firebase.database();
 
-  database.ref('expenses').push({
-    description: 'Gum',
-    note: '',
-    amount: 195,
-    createdAt: 0
-  });
+  export { firebase, database as default};
 
-  database.ref('expenses').push({
-    description: 'Rent',
-  note: '',
-  amount: 109500,
-  createdAt: moment(0).subtract(4, 'days').valueOf()
-  });
+  // database.ref('expenses').push({
+  //   description: 'Gum',
+  //   note: '',
+  //   amount: 195,
+  //   createdAt: 0
+  // });
 
-  database.ref('expenses').push({
-    description: 'Credit Card',
-    note: '',
-    amount: 4500,
-    createdAt: moment(0).add(4, 'days').valueOf()
-  });
+  // database.ref('expenses').push({
+  //   description: 'Rent',
+  // note: '',
+  // amount: 109500,
+  // createdAt: moment(0).subtract(4, 'days').valueOf()
+  // });
+
+  // database.ref('expenses').push({
+  //   description: 'Credit Card',
+  //   note: '',
+  //   amount: 4500,
+  //   createdAt: moment(0).add(4, 'days').valueOf()
+  // });
+
+  // database.ref('expenses')
+  // .once('value')
+  // .then((snapshot)=>{
+  //   const expenses = [];
+  //   snapshot.forEach((childSnapshot)=>{
+  //     expenses.push({
+  //       id:childSnapshot.key,
+  //       ...childSnapshot.val()
+  //     })
+  //   })
+  //   console.log(expenses);
+  // });
+
+  // database.ref('expenses').on('child_changed', (snapshot)=>{
+  //   console.log(snapshot.key, snapshot.val())
+  // });
+
+  // const onValueChange = database.ref('expenses').on('value', (snapshot)=>{
+  //   const expenses = [];
+  //   snapshot.forEach((childSnapshot)=>{
+  //     expenses.push({
+  //       id:childSnapshot.key,
+  //       ...childSnapshot.val()
+  //     })
+  //   })
+  //   console.log(expenses);
+  // });
+
+
 //   database.ref().set({
 //       name:'Sabuj Saha',
 //       age:26,
@@ -56,9 +88,7 @@ const firebaseConfig = {
 //     console.log('This failed.', e)
 //   });
 
-// const onValueChange = database.ref().on('value', (snapshot)=>{
-//     console.log(snapshot.val());
-// });
+
 
 //  setTimeout(()=>{
 //     database.ref().update({
