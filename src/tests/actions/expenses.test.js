@@ -110,16 +110,15 @@ test('should setup add expense action object with data', () => {
   });
 });
 
-test('should fetch the expenses from firebase',(done)=>{
+test('should fetch the expenses from firebase', (done) => {
   const store = createMockStore({});
-  store.dispatch(startSetExpenses()).then(()=>{
+  store.dispatch(startSetExpenses()).then(() => {
     const actions = store.getActions();
-    expect(action[0]).toEqual({
-      type:'SET_EXPENSES',
+    expect(actions[0]).toEqual({
+      type: 'SET_EXPENSES',
       expenses
     });
     done();
   });
 });
-
 
