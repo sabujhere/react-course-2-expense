@@ -12,8 +12,9 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const googleAuthProbider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, database as default };
+export { firebase,googleAuthProbider, database as default };
 
 // // child_removed
 // database.ref('expenses').on('child_removed', (snapshot) => {
